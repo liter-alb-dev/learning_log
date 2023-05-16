@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -23,7 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ddb&x28_4xg#@5b1b_x#(b7_8qf8(5t3))%#ai=08#!d6-1-ho'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #True
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
