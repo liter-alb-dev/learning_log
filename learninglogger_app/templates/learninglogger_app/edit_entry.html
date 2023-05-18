@@ -1,4 +1,4 @@
-{% extends 'learning_log_app/base.html' %}
+{% extends 'learninglogger_app/base.html' %}
 {% load bootstrap4 %}
 
 {% block page_header %}
@@ -7,10 +7,10 @@
 
 {% block content %}
 
-    <h3><a href="{% url 'learning_log_app:topic' topic.id %}">{{ topic }}</a></h3>
+    <h3><a href="{% url 'learninglogger_app:topic' topic.id %}">{{ topic }}</a></h3>
 
 
-    <form action="{% url 'learning_log_app:edit_entry' entry.id %}" method="post" class="form">
+    <form action="{% url 'learninglogger_app:edit_entry' entry.id %}" method="post" class="form">
         {% csrf_token %}
 
         {% bootstrap_form form %}

@@ -1,4 +1,4 @@
-{% extends 'learning_log_app/base.html' %}
+{% extends 'learninglogger_app/base.html' %}
 {% load bootstrap4 %}
 
 {% block page_header %}
@@ -7,7 +7,7 @@
 
 {% block content %}
     
-    <form action="{% url 'learning_log_app:new_topic' %}" method="post" class="form">
+    <form action="{% url 'learninglogger_app:new_topic' %}" method="post" class="form">
         {% csrf_token %}
 
         {% bootstrap_form form %}

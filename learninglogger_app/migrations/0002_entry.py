@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('learning_log_app', '0001_initial'),
+        ('learninglogger_app', '0001_initial'),
     ]
 
     operations = [
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('text', models.TextField()),
                 ('date_added', models.DateTimeField(auto_now_add=True)),
-                ('topic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='learning_log_app.topic')),
+                ('topic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='learninglogger_app.topic')),
             ],
             options={
                 'verbose_name_plural': 'entries',

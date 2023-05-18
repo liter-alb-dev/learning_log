@@ -1,4 +1,4 @@
-{% extends 'learning_log_app/base.html' %}
+{% extends 'learninglogger_app/base.html' %}
 
 {% block page_header %}
     <h1>Topics</h1>
@@ -11,7 +11,7 @@
         {% for topic in topics %}
         
         <li><h3>
-            <li><a href="{% url 'learning_log_app:topic' topic.id %}">{{ topic }}</a></li>
+            <li><a href="{% url 'learninglogger_app:topic' topic.id %}">{{ topic }}</a></li>
         </h3></li>
 
         {% empty %}
@@ -19,6 +19,6 @@
         {% endfor %}
     </ul>
     
-    <h3><a href="{% url 'learning_log_app:new_topic' %}">Add a new topic</a></h3>
+    <h3><a href="{% url 'learninglogger_app:new_topic' %}">Add a new topic</a></h3>
 
 {% endblock content %}

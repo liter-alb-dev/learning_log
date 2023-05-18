@@ -1,4 +1,4 @@
-{% extends "learning_log_app/base.html" %}
+{% extends "learninglogger_app/base.html" %}
 {% load bootstrap4 %}
 
 {% block page_header %}
@@ -15,7 +15,7 @@
             <button name="submit" class="btn btn-primary">Log in</button>
         {% endbuttons %}
         
-        <input type="hidden" name="next" value="{% url 'learning_log_app:index' %}" />
+        <input type="hidden" name="next" value="{% url 'learninglogger_app:index' %}" />
     </form>
 
 {% endblock content %}

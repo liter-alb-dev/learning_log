@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('learning_log_app', '0004_rename_world_topic_date_added_and_more'),
+        ('learninglogger_app', '0004_rename_world_topic_date_added_and_more'),
     ]
 
     operations = [

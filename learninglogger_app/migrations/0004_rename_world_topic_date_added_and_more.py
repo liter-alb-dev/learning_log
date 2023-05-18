@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('learning_log_app', '0003_rename_text_topic_hello_and_more'),
+        ('learninglogger_app', '0003_rename_text_topic_hello_and_more'),
     ]
 
     operations = [

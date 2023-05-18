@@ -8,7 +8,7 @@ from .forms import TopicForm, EntryForm
 # Create your views here.
 def index(request):
     """The home page for Learning Log."""
-    return render(request, 'learning_log_app/index.html')
+    return render(request, 'learninglogger_app/index.html')
 
 def check_topic_owner(topic, request):
     if topic.owner != request.user:
@@ -20,7 +20,7 @@ def topics(request):
     """The page to view all topics"""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
-    return render(request, 'learning_log_app/topics.html', context)
+    return render(request, 'learninglogger_app/topics.html', context)
 
 @login_required
 def topic(request, topic_id):
@@ -29,7 +29,7 @@ def topic(request, topic_id):
 
     entries = topic.entry_set.order_by('date_added')
     context = {'topic': topic, 'entries': entries}
-    return render(request, 'learning_log_app/topic.html', context)
+    return render(request, 'learninglogger_app/topic.html', context)
 
 @login_required
 def new_topic(request):
@@ -39,7 +39,7 @@ def new_topic(request):
         form = TopicForm()
         # Display a blank or invalid form.
         context = {'form': form}
-        return render(request, 'learning_log_app/new_topic.html', context)
+        return render(request, 'learninglogger_app/new_topic.html', context)
     else:
         # POST data submitted; process data.
         form = TopicForm(request.POST)
@@ -47,7 +47,7 @@ def new_topic(request):
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
             new_topic.save()
-            return redirect('learning_log_app:topics')
+            return redirect('learninglogger_app:topics')
 
 @login_required
 def new_entry(request, topic_id):
@@ -60,7 +60,7 @@ def new_entry(request, topic_id):
         form = EntryForm()
         # Display a blank or invalid form.
         context = {'form': form, 'topic': topic}
-        return render(request, 'learning_log_app/new_entry.html', context)
+        return render(request, 'learninglogger_app/new_entry.html', context)
     else:
         # POST data submitted; process data.
         form = EntryForm(request.POST)
@@ -68,7 +68,7 @@ def new_entry(request, topic_id):
             new_entry = form.save(commit=False)
             new_entry.topic = topic
             new_entry.save()
-            return redirect(f'learning_log_app:topic', topic_id=topic_id)
+            return redirect(f'learninglogger_app:topic', topic_id=topic_id)
 
 @login_required
 def edit_entry(request, entry_id):
@@ -82,10 +82,10 @@ def edit_entry(request, entry_id):
         form = EntryForm(instance=entry)
         # Display a blank or invalid form.
         context = {'form': form, 'topic': topic, 'entry': entry}
-        return render(request, 'learning_log_app/edit_entry.html', context)
+        return render(request, 'learninglogger_app/edit_entry.html', context)
     else:
         # POST data submitted; process data.
         form = EntryForm(instance=entry, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect(f'learning_log_app:topic', topic_id=topic.id)
+            return redirect(f'learninglogger_app:topic', topic_id=topic.id)
